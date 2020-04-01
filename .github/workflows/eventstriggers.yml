@@ -17,7 +17,7 @@ on:
 jobs:
   merge-PR:
     name: merge-PR
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true #nomaster merge
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.ref == 'refs/heads/master' #nomaster merge
     runs-on: ubuntu-latest
     steps:
 
