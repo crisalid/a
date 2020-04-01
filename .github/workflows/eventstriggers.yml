@@ -16,7 +16,7 @@ on:
 
 jobs:
   merge-PR:
-    if: github.event.pull_request.merged == true && github.ref == 'refs/heads/ccc' #ccc merge
+    if: github.event.pull_request.merged == true && github.ref == 'refs/heads/master' #ccc merge
     runs-on: ubuntu-latest
     steps:
 
