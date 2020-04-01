@@ -10,12 +10,13 @@ on:
     tags: 
       - 'v*'
   pull_request:
-    types: [closed]
-    branches: [ master ]   
+    types: [closed, opened, edited]
+    branches: 
+      - '*'  
 
 jobs:
   merge-PR:
-    if: github.event.pull_request.merged == true #point 4.b
+    if: github.event.pull_request.merged == true && github.ref == 'refs/heads/master' #xxx yyy merge
     runs-on: ubuntu-latest
     steps:
 
