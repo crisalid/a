@@ -16,7 +16,7 @@ on:
 
 jobs:
   merge-PR:
-    if: github.event.pull_request.merged == true && github.ref == 'refs/heads/crisalid-yyy' #xxx yyy merge
+    if: github.event.pull_request.merged == true && github.ref == 'refs/heads/master' #xxx yyy merge
     runs-on: ubuntu-latest
     steps:
 
