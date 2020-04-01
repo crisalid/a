@@ -16,7 +16,7 @@ on:
 
 jobs:
   merge-PR:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.ref == 'refs/heads/master' #testzzzz merge
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true #testzzzz merge
     runs-on: ubuntu-latest
     steps:
 
