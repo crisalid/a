@@ -15,7 +15,7 @@ on:
       - '**'  
 
 jobs:
-  build-and-push:
+  build-and-push: # PR open/updated - build and push image
     name: build-and-push
     
     runs-on: ubuntu-latest
@@ -27,7 +27,7 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
   
-  build-and-deploy:
+  build-and-deploy: # Master merge/commit/tag - build and push image and deploy to CI/CD
     name: build-and-deploy
     if: (github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.ref != 'refs/heads/master') || (github.event_name == 'push' && github.ref == 'refs/heads/master') #3333 merge
     runs-on: ubuntu-latest
