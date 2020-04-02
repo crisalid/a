@@ -15,8 +15,20 @@ on:
       - '**'  
 
 jobs:
-  merge-PR:
-    name: merge-PR
+  build-and-push:
+    name: build-and-push
+    
+    runs-on: ubuntu-latest
+    steps:
+     
+    # Runs a set of commands using the runners shell
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
+  
+  build-and-deploy:
+    name: build-and-deploy
     if: (github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.ref != 'refs/heads/master') || (github.event_name == 'push' && github.ref == 'refs/heads/master') #3333 merge
     runs-on: ubuntu-latest
     steps:
@@ -30,14 +42,4 @@ jobs:
       run: |
         echo Hello, world!
         echo ${{github.ref}}
-  commit-master:
-    name: commit-master
-    
-    runs-on: ubuntu-latest
-    steps:
-     
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+  
