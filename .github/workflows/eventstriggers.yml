@@ -17,7 +17,7 @@ on:
 jobs:
   build-and-push: # PR open/updated - build and push image
     name: build-and-push
-    if: (github.event.ref_type == 'tag' && github.ref == 'refs/heads/master')
+    if: (github.event.ref_type == 'tag') # (github.event_name == 'push' && github.ref == 'refs/heads/master') ||  && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
      
