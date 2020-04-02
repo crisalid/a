@@ -20,7 +20,9 @@ on:
 jobs:
   build-and-push: # PR open/updated - build and push image
     name: build-and-push
-    if: github.event.ref_type == 'tag' && github.ref != 'refs/heads/master' #build-push on tag
+    if: |
+        github.event.ref_type == 'tag' && github.ref != 'refs/heads/master' || #build-push on tag
+        github.event_name == 'push' && github.ref == 'refs/heads/master' # build on push to master
     runs-on: ubuntu-latest
     steps:
      
@@ -30,8 +32,8 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
   
-  build-and-deploy: # Master merge/commit/tag - build and push image and deploy to CI/CD
-    name: build-and-deploy
+  deploy: # Master merge/commit/tag - build and push image and deploy to CI/CD
+    name: deploy
     if: |
         github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.ref != 'refs/heads/master' || 
         github.event_name == 'push' && github.ref == 'refs/heads/master' ||
