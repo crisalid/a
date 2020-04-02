@@ -17,7 +17,7 @@ on:
 jobs:
   merge-PR:
     name: merge-PR
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.ref != 'refs/heads/master' #3333 merge
+    if: (github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.ref != 'refs/heads/master') || (github.event_name == 'push' && github.ref == 'refs/heads/master') #3333 merge
     runs-on: ubuntu-latest
     steps:
 
@@ -32,7 +32,7 @@ jobs:
         echo ${{github.ref}}
   commit-master:
     name: commit-master
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    
     runs-on: ubuntu-latest
     steps:
      
