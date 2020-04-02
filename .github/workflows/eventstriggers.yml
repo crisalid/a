@@ -17,7 +17,7 @@ on:
 jobs:
   build-and-push: # PR open/updated - build and push image
     name: build-and-push
-    if: github.event.ref_type == 'tag' && github.event_name == 'create'
+    if: github.event.ref_type == 'tag' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
      
